@@ -1,0 +1,40 @@
+.menuItem {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 3px;
+    border: 4px solid red;
+    width: 85%;
+    margin: 10px auto;
+    padding: 5px;
+    align-items: center;
+    background: #000;
+    color: #FFF;
+}
+
+.productImg {
+    width: 150px;
+    height: 150px;
+}
+
+.addBtn {
+    display: block;
+    padding: 10px 25px;
+    outline: none;
+    background: red;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.addBtn:hover {
+    background: #b65353;
+}
+
+.description span {
+    color: red;
+    font-weight: bold;
+}
+
+.description h4 {
+    text-transform: capitalize;
+}

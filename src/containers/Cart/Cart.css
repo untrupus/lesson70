@@ -1,0 +1,40 @@
+.cart {
+    width: 35%;
+    height: 500px;
+    border-radius: 3px;
+    border: 4px solid red;
+    margin-top: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cart p {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.order {
+    text-align: center;
+    width: 80%;
+    border-top: 3px solid red;
+    margin: 0 auto;
+}
+
+.order .addBtn {
+    margin: 0 auto;
+}
+
+.pizza {
+    padding: 0 10%;
+}
+
+.pizza p {
+    cursor: pointer;
+}
+.pizza p:hover {
+    color: red;
+}

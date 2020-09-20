@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore, applyMiddleware} from "redux";
+import {createStore, applyMiddleware, combineReducers} from "redux";
 import thunkMiddleware from "redux-thunk";
 import {Provider} from "react-redux";
-import reducer from "./store/reducer";
+import menuReducer from "./store/reducers/menuReducer";
+import cartReducer from "./store/reducers/cartReducer";
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware));
+const rootReducer = combineReducers({
+   menu: menuReducer,
+   cart: cartReducer
+});
+
+const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 ReactDOM.render(
     <React.StrictMode>
