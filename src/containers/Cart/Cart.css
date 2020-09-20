@@ -22,6 +22,7 @@
     width: 80%;
     border-top: 3px solid red;
     margin: 0 auto;
+    height: 150px;
 }
 
 .order .addBtn {

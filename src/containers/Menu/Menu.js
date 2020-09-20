@@ -12,7 +12,6 @@ const Menu = () => {
     useEffect(() => {
         dispatch(fetchMenu());
     }, [dispatch]);
-
     const addItemHandler = name => dispatch(addItem(name));
 
     const menuList = menu.map(item => {
