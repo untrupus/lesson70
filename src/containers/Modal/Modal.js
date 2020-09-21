@@ -11,7 +11,15 @@ const Modal = props => {
        phone: ''
     });
 
-    const pizza = {};
+    const pizza = [];
+    Object.values(cart).forEach(value => {
+        console.log(value);
+        if (value.amount > 0) {
+            pizza.push(value.amount);
+        }
+    });
+
+    console.log(pizza);
 
     const customerDataChanged = event => {
         const name = event.target.name;
@@ -24,7 +32,7 @@ const Modal = props => {
 
     const postOrder = async(cancel) => {
         if (order.name !== '' && order.email !== '' && order.phone !== '') {
-          await axiosOrder.post('/orders.json', {customer: order, cart: cart});
+          await axiosOrder.post('/orders.json', {customer: order, cart: pizza});
             cancel();
         }
     };
