@@ -1,13 +1,17 @@
 import React, {useState} from 'react';
 import axiosOrder from "../../axiosOrder";
 import './Modal.css';
+import {useSelector} from "react-redux";
 
 const Modal = props => {
+    const cart = useSelector(state => state.cart);
     const [order, setOrder] = useState({
        name: '',
        mail: '',
        phone: ''
     });
+
+    const pizza = {};
 
     const customerDataChanged = event => {
         const name = event.target.name;
@@ -18,9 +22,10 @@ const Modal = props => {
         }));
     };
 
-    const postOrder = async() => {
+    const postOrder = async(cancel) => {
         if (order.name !== '' && order.email !== '' && order.phone !== '') {
-          await axiosOrder.post('/orders.json', order);
+          await axiosOrder.post('/orders.json', {customer: order, cart: cart});
+            cancel();
         }
     };
 
@@ -48,7 +53,7 @@ const Modal = props => {
                         >cancel</button>
                 <button type="button"
                         className="addBtn"
-                        onClick={postOrder}
+                        onClick={() => postOrder(props.click)}
                 >make order</button>
             </div>
         </div>

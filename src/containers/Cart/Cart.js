@@ -14,7 +14,11 @@ const Cart = () => {
 
     const cartSum = Object.values(cart);
     const int = cartSum.reduce((acc, value) => {
-        return acc + value;
+        return acc + value.amount;
+    }, 0);
+
+    const totalPrice = Object.entries(cart).reduce((acc, value) => {
+        return acc + (value[1].price * value[1].amount);
     }, 0);
 
     let order = null;
@@ -22,7 +26,7 @@ const Cart = () => {
         order = (
             <>
                 <p>Delivery: 150 KGS</p>
-                <p>Total Price:</p>
+                <p>Total Price: {totalPrice + 150}</p>
                 <button className="addBtn"
                         onClick={() => setShowModal(true)}
                 >Place order
@@ -30,14 +34,14 @@ const Cart = () => {
             </>
         );
     }
-
     const pizza = Object.entries(cart).map(item => {
-        if (item[1] !== 0) {
+        if (item[1].amount !== 0) {
             return (
                 <div className="orderItem"
                      key={item[0]}>
                     <p onClick={() => removeItemHandler(item[0])}
-                    >{item[0] + ': ' + item[1]}</p>
+                    >{item[0] + ': ' + item[1].amount}</p>
+                    <p>{item[1].amount * item[1].price} KGS</p>
                 </div>
             )
         }
@@ -48,7 +52,6 @@ const Cart = () => {
             click={() => setShowModal(false)}
         /> : null
     );
-
 
     return (
         <div className="cart">

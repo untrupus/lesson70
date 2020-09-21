@@ -39,3 +39,8 @@
 .pizza p:hover {
     color: red;
 }
+
+.orderItem {
+    display: flex;
+    justify-content: space-between;
+}
